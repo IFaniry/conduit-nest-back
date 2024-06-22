@@ -1,0 +1,46 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateUserInput {
+  confirmPassword: String!
+  email: String!
+  password: String!
+  username: String!
+}
+
+input FindUserInput {
+  email: String!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+type LoginUserResponse {
+  access_token: String!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+
+  """login using email/password to obtain a JWT token"""
+  login(input: LoginUserInput!): LoginUserResponse!
+  removeUser(input: Int!): User!
+}
+
+type Query {
+  """returns current logged in user"""
+  currentUser: User!
+  user(input: FindUserInput!): User!
+  users: [User!]!
+}
+
+type User {
+  bio: String
+  email: String!
+  image: String
+  isActive: Boolean!
+  username: String!
+}
